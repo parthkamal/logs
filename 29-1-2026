@@ -1,0 +1,105 @@
+HTTP - a application layer protocol, tcp works under the hook, 
+TCP Handshake - syn, syn-ack , ack 
+
+Persistent Connection - don't close tcp connection after one request response   
+
+  keep-alive -> Connection header in http/1.0 to persist the http connection
+    before keep-alive header -> single tcp connection would server only one http request / response. 
+    now same tcp connection can be used to server multiple http requests.  
+
+HTTP Headers -
+
+  General Headers -
+
+    Cache-control: max-age=3600, public 
+      cache the response in each infra layer for 3600 seconds
+
+    Cache-control: no-store 
+      dont' cache the response anywhere. 
+
+    Cache-control: no-cache 
+      cache the response, but must re-validate with the browser before using it. 
+
+    Date: Sun, 22 Aug 2025 14:00:00 GMT 
+      indicates when server sends the response. 
+
+    Via: 1.1 proxy1.example.com, 1.1 proxy2.example.com 
+      represents via which proxy servers , the request is coming. 
+
+  Request headers - ( attached by the client )
+
+    Host: blog.example.com 
+      hostname of the server, from which the client is requesting.
+
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/114.0.0.0 Safari/537.36 
+      informs server about the client-s browser.
+
+    Accept: application/json 
+      informs server the expected format of the response from the client.  
+
+    Accept-Language: en-US, de;q=0.9 
+      informs browser language prefs. 
+
+    Accept-Encoding: gzip , deflate , br 
+      informs server expected compression algorithm for the response
+
+    Cookie: session_id=abc567; theme=dark 
+      client uses this header to send the cookie. 
+
+    Referer: https://example.com/page1 
+      represents the site from which the client has been referred. 
+
+    Authorization: Bearer eyJhbKciOiJm 
+      client use this for sending authentication credentials
+
+    Range: bytes=0-499 
+      lets client download specific byte range of a file. ( used in streaming,short videos , optimises bandwidth ) 
+
+    If-Modified-Since: Tue, 11 Jun 2024 10:00:00 GMT 
+      send the resource only when modified since ( optimising bandwidth )
+
+    X-Forwarded-For: 203.0.113.21 
+      attached by the proxy , defines for which client the request is forwarded. ( 203, here is client ip ) 
+
+    X-Forwarded-Proto: https 
+      attached by lb or proxy , defines the original protocol used by the client. 
+
+    X-Forwarded-Port: 443 
+      tells the server original port used by the client. 
+  
+  Response Headers -
+
+    Location: /welcome  
+      attached by the server, tell the location of the resource created. ( client can use it for redirection )
+
+    Set-Cookie: session_id=abc123; Path=/; HttpOnly 
+      server instructing the client to store data as a cookie. 
+
+    Access-Control-Allow-Origin: ecommerce-store.com  
+      tells the browser which sites are allowed to access resource on a site.
+
+    Age: 120 
+      attached by a cache , cdn or proxy, represents how many seconds the response has been cached since fetched from origin. ( helps browser decide the cache freshness ) 
+
+    Accept-Ranges: bytes 
+      server telling whether it supported the partial request or resource download. ( useful in streaming )
+
+    Content-Range: bytes 0-499/1234
+      represents which part of the partial request have been served. 
+  
+  Payload Headers -
+
+    Content-Type: application/json 
+      server indicates the format of the response being served. 
+
+    Content-Length: 348
+      server indicating the length of the message body / payload
+
+    Content-Encoding: gzip
+      server indicates the compression algorithm used for the response.
+
+    Content-Language: en-US
+      server indicates the languages of the response 
+
+    Last-Modified: Tue, 11 Jun 2024 10:00:00 GMT
+      server indicates when the resource was last modified. 

@@ -103,3 +103,14 @@ HTTP Headers -
 
     Last-Modified: Tue, 11 Jun 2024 10:00:00 GMT
       server indicates when the resource was last modified. 
+
+
+trie deletion - 
+
+5 cases - 
+
+1. key not present in the trie - ( delete nothing )
+2. key is not a prefix of any other key - ( delete all nodes )
+3. key have common prefix with other key - ( unmark )
+4. key have leading an existing elements - ( delete the part of the key , which is leading the preceding, ex test and testing  ) 
+5. 

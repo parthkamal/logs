@@ -1,0 +1,48 @@
+kmp solves pattern searching and its index in o(N+M)
+building of lps array
+  complete string is ignored ( only PROPER prefix and PROPER suffix are considered )
+  prefix are suffix are compared in same order ( direction l-> r )
+  prefix are suffix can overlap, we just need to ignore the complete string. 
+  for a lps of i it can be max lps[i-1] + 1 ( prove by contradiction )
+
+port 80 - standard default port for insecure HTTP
+port 443 - standard default port for secure (tls/https)
+
+each user connection buffer needs to be maintained, go and nodejs are much bettern than java in those context. ( java keeps a large stack area, for classloaders and gc metadata ) 
+
+kv store - 
+  pros - 
+    sechema less design 
+    data model - key value pairs
+    high performance - we can directly access the value by querying for the key. 
+    easily scalable, accross multiple server, some keys in one server, and some in others. ( consistent hashing can also be used for even distribution )
+    use cases - analytics, cache, session
+
+  cons - 
+    fast for simple querying but complex querying / aggregations might be challenging
+    strict relationships needs to be handled in application logic. 
+
+@Headers decorator in nestjs for handling the logic according to the request headers. 
+
+location (response header) - primarily used for redirection, once a resource is created , we can location header in the reponse of the post request, to let the client find the created resource. 
+  res.setHeader(location, /users/${userId})
+
+access-control-allow-origin - 
+  response header set by the server, 
+  browser checks the response header and if the header value doesn't match from the origin which it is called. then it blocks the response
+    it makes sure that evil.com cannot view the response from bank.com, even if sends the request. 
+  browser also blocks the response if the header is missing. ( default behaviour ) 
+  this is also known as same origin policy (sop)
+
+requests are of two types - 
+  simple request - GET , HEAD, POST
+  preflight reuqest - PUT , DELETE, PATCH , OPTIONS ,, in these requests,  browser automatically send a options ( preflight ) request to know its support.
+
+every simple request is processed by the server no matter from which origin it is coming
+therefore, cors is not a security feature,  it just prevents unauthorized sites from viewing your data. ( but still data can be deleted.)
+
+cors just says, only these origins are allowed to read the response, but still writes can happen
+
+write prevention is implemented through CSRF Token
+
+

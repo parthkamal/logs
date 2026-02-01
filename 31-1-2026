@@ -1,0 +1,43 @@
+head first design patterns - 
+
+  if we introduce unnecessary interface, we are bound to implement all the subclass, which does favours our idea of code -reuse. 
+
+  interface only provides the skeleton , sometimes it might be required, to achieve abstraction
+  our software design should provide the capability to add a functionality with minimal change, hence enforcing maintainability. 
+
+  change is inevitable in software development
+
+  program to an interface not to an implementation
+    eg. Dog dog = new Dog(); // program to an implementation
+    eg. Animal dog = new Dog(); // program to an interface
+  
+  it is always advisable to group related entities under a abstract supertype ( abstract class /interface )
+
+
+  design principle 1. - identify the aspects of your application which varies and separate them from what stays the same. 
+    it can be done through , encapsulation the variables in an interface 
+
+    if an implementation is varying across similar classes, try to find a way to encasulate it. 
+    once the variables are encapsulated and separated, we can now delegate its implementation to them
+
+    we can also implement setter methods for those dynamic behaviours, to be able to choose relevant behaviour at the time at the runtime. 
+
+  after implementing your design , identify the type of relationshiops between the classes and interfaces
+  for eg. whether it is ( is-a, has )
+
+  is-a -> inheritance
+  has -> composition ( because encapsulated behaviour are not the exact entity, it is a part of it ie, behviour , hence its a composition relation )
+
+  design priciple 2 - favour composition over inheritance
+
+
+
+  strategy pattern - 
+  1. defines a family of algorithms, ( behaviour subclasses ), encapsulate each one of them, and make them interchangeable. 
+  2. lets the algorithms vary independently from the clients which use it. 
+
+
+
+
+
+  
